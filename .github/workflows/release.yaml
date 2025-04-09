@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       dry_run:
-        description: "If true, no changes will be pushed 
+        description: "dry-run mode: if true, no changes will be pushed 
                       (useful for testing the workflow without creating a tag)."
         required: true
         type: boolean
@@ -22,7 +22,7 @@ on:
           - bugfix
           - build
       forced_version:
-        description: "Optional SemVer2-compliant version to tag explicitly, instead of auto-bumping.
+        description: "(Optional) SemVer2-compliant forced-version to tag explicitly, instead of auto-bumping.
                       Must not already exist"
         required: false
         type: string
