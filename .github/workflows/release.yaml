@@ -59,7 +59,7 @@ jobs:
 
       # Scheduled release with default values, only if there is a change
       - name: Schedule bump build version and push tag
-        uses: mgreau/action/git-bump-tag-semver@main
+        uses: mgreau/actions/git-bump-tag-semver@main
         if: ${{ steps.check.outputs.bump == 'yes' && github.event_name == 'schedule' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -69,7 +69,7 @@ jobs:
 
       # Manual release
       - name: Manual bump version and push tag
-        uses: mgreau/action/git-bump-tag-semver@main
+        uses: mgreau/actions/git-bump-tag-semver@main
         if: ${{ steps.check.outputs.bump == 'yes' && ! github.event_name == 'schedule' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
