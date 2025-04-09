@@ -6,8 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       dry_run:
-        description: "dry-run mode: if true, no changes will be pushed 
-                      (useful for testing the workflow without creating a tag)."
+        description: "dry-run mode: if true, no git tags will be pushed."
         type: boolean
         default: false
       release_type:
