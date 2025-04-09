@@ -5,6 +5,12 @@ on:
     - cron: '0 0 * * 1' # weekly on Monday at 00:00
   workflow_dispatch:
     inputs:
+      dry_run:
+        description: "If true, no changes will be pushed 
+                      (useful for testing the workflow without creating a tag)."
+        required: true
+        type: boolean
+        default: false
       release_type:
         description: "Type of Release"
         required: true
@@ -20,12 +26,7 @@ on:
                       Must not already exist"
         required: false
         type: string
-      dry_run:
-        description: "If true, no changes will be pushed 
-                      (useful for testing the workflow without creating a tag)."
-        required: true
-        type: boolean
-        default: false
+
 
 permissions:
   contents: read
@@ -70,7 +71,6 @@ jobs:
       # Manual release
       - name: Manual bump version and push tag
         uses: mgreau/actions/git-bump-tag-semver@git-bump-tag-semver
-        if: ${{ steps.check.outputs.bump == 'yes' && ! github.event_name == 'schedule' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           git_tag_prefix: "v"
