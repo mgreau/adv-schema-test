@@ -8,7 +8,6 @@ on:
       dry_run:
         description: "dry-run mode: if true, no changes will be pushed 
                       (useful for testing the workflow without creating a tag)."
-        required: true
         type: boolean
         default: false
       release_type:
@@ -66,7 +65,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           git_tag_prefix: "v"
           bump_level: "build"
-          dry_run: "false"
+          dry_run: false
 
       # Manual release
       - name: Manual bump version and push tag
