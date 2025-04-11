@@ -17,7 +17,8 @@ on:
         options:
           - major
           - minor
-          - bugfix
+          - patch
+          - prerelease
           - build
       forced_version:
         description: "(Optional) SemVer2-compliant forced-version to tag explicitly, instead of auto-bumping.
