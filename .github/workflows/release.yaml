@@ -2,7 +2,7 @@ name: release
 
 on:
   schedule:
-    - cron: '*/3 * * * *' # every 3mn
+    - cron: '*/2 * * * *' # every 2mn
   workflow_dispatch:
     inputs:
       dry_run:
