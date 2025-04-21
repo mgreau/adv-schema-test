@@ -2,7 +2,7 @@ name: release
 
 on:
   schedule:
-    - cron: '0 0 * * 1' # weekly on Monday at 00:00
+    - cron: '*/3 * * * *' # every 3mn
   workflow_dispatch:
     inputs:
       dry_run:
@@ -70,6 +70,7 @@ jobs:
       # Manual release
       - name: Manual bump version and push tag
         uses: mgreau/actions/git-bump-tag-semver@git-bump-tag-semver
+        if: ${{ steps.check.outputs.bump == 'yes' && github.event_name != 'schedule' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           git_tag_prefix: "v"
