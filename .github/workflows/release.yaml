@@ -1,8 +1,8 @@
 name: release
 
 on:
-  schedule:
-    - cron: '*/2 * * * *' # every 2mn
+  #schedule:
+    #- cron: '*/2 * * * *' # every 2mn
   workflow_dispatch:
     inputs:
       dry_run:
